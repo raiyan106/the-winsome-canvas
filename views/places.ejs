@@ -1,9 +1,39 @@
-<h1>The various Places</h1>
+<%include ./partials/header %>
 
 
 
-<% places.forEach((place)=>{ %>
-    <h4><%= place.name %></h4>
-    <img height="200" width="200" src="<%=place.image %>" alt="none">
+<div class="container">
 
-<% }); %>
+<header class="jumbotron">
+<div class="container">
+    <h1>Welcome to The <em>Winsome Canvas</em>!</h1>
+    <p>View some special Places</p>
+    <p><a class="btn btn-primary btn-large" href="/places/new">Add a new Place</a></p>
+    
+    
+</div>
+    
+</header>
+
+<div class="row" style="display:flex; flex-wrap:wrap;">
+    <% places.forEach((place)=>{ %>
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnail text-center">
+            <img src="<%=place.image %>" alt="none">
+                <div class="caption">
+                    <h4><%= place.name %></h4>
+                </div>
+                
+            </div>
+                
+        </div>     
+    <% }); %>    
+    
+</div>
+
+
+
+
+
+</div>
+<%include ./partials/footer%>
