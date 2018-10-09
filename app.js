@@ -38,6 +38,11 @@ mongoose.connect("mongodb://localhost/winsome-canvas",{useNewUrlParser:true})
  passport.serializeUser(Users.serializeUser());
  passport.deserializeUser(Users.deserializeUser());
 
+ app.use((req,res,next)=>{
+    res.locals.currentUser = req.user;
+    next();
+ });
+
 
 
 
@@ -70,7 +75,7 @@ app.get("/places", async (req,res)=>{
 
     const places = await Places.find();
 
-    res.render("places/index",{places:places});
+    res.render("places/index",{places:places,currentUser:req.user});
 });
 
 app.get("/places/new",(req,res)=>{
